@@ -31323,6 +31323,8 @@ type Subscription struct {
 	Version *string `json:"version,omitempty"`
 
 	VersionUUID *string `json:"versionUuid,omitempty"`
+
+	IsAssignmentUpgradeAvailable *bool `json:"isAssignmentUpgradeAvailable,omitempty"`
 }
 
 // UnmarshalSubscription unmarshals an instance of Subscription from the specified map of raw messages.
@@ -31397,6 +31399,10 @@ func UnmarshalSubscription(m map[string]json.RawMessage, result interface{}) (er
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "versionUuid", &obj.VersionUUID)
+	if err != nil {
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "IsAssignmentUpgradeAvailable", &obj.IsAssignmentUpgradeAvailable)
 	if err != nil {
 		return
 	}
