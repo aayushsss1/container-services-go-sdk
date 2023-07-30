@@ -31405,7 +31405,7 @@ func UnmarshalSubscription(m map[string]json.RawMessage, result interface{}) (er
 	if err != nil {
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "IsAssignmentUpgradeAvailable", &obj.IsAssignmentUpgradeAvailable)
+	err = core.UnmarshalPrimitive(m, "isAssignmentUpgradeAvailable", &obj.IsAssignmentUpgradeAvailable)
 	if err != nil {
 		return
 	}
