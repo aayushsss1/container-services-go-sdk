@@ -12110,6 +12110,9 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) UpdateAssignmentWithContext(
 	if updateAssignmentOptions.UUID != nil {
 		body["uuid"] = updateAssignmentOptions.UUID
 	}
+	if updateAssignmentOptions.UpdateConfigVersion != nil {
+		body["updateConfigVersion"] = updateAssignmentOptions.UpdateConfigVersion
+	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
 		return
@@ -31768,6 +31771,8 @@ type UpdateAssignmentOptions struct {
 
 	UUID *string
 
+	UpdateConfigVersion *bool
+
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -31792,6 +31797,12 @@ func (options *UpdateAssignmentOptions) SetName(name string) *UpdateAssignmentOp
 // SetUUID : Allow user to set UUID
 func (options *UpdateAssignmentOptions) SetUUID(uuid string) *UpdateAssignmentOptions {
 	options.UUID = core.StringPtr(uuid)
+	return options
+}
+
+// SetUpdateConfigVersion : Allow user to update the config version
+func (options *UpdateAssignmentOptions) SetUpdateConfigVersion(updateConfigVersion bool) *UpdateAssignmentOptions {
+	options.UpdateConfigVersion = core.BoolPtr(updateConfigVersion)
 	return options
 }
 
