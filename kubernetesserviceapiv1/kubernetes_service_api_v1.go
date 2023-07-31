@@ -11266,13 +11266,13 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateAssignmentByClusterWit
 	builder.AddHeader("Content-Type", "application/json")
 
 	body := make(map[string]interface{})
-	if createAssignmentOptions.Config != nil {
+	if createAssignmentOptions.Cluster != nil {
 		body["cluster"] = createAssignmentOptions.Cluster
 	}
-	if createAssignmentOptions.Groups != nil {
+	if createAssignmentOptions.Config != nil {
 		body["config"] = createAssignmentOptions.Config
 	}
-	if createAssignmentOptions.Groups != nil {
+	if createAssignmentOptions.Controller != nil {
 		body["controller"] = createAssignmentOptions.Controller
 	}
 	if createAssignmentOptions.Name != nil {
