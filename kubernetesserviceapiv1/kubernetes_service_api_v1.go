@@ -25,6 +25,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"reflect"
 	"time"
@@ -11379,16 +11380,22 @@ func (kubernetesServiceApi *KubernetesServiceApiV1) CreateStorageConfigurationWi
 		return
 	}
 
+	log.Println("Built JSON Body")
+
 	request, err := builder.Build()
 	if err != nil {
 		return
 	}
+	log.Println("Request Built")
 
+	log.Println("Before Sending the Request")
 	var rawResponse map[string]json.RawMessage
 	response, err = kubernetesServiceApi.Service.Request(request, &rawResponse)
 	if err != nil {
 		return
 	}
+	log.Println("After Sending the Request")
+
 	err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalCreateConfigurationData)
 	if err != nil {
 		return
